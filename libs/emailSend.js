@@ -39,12 +39,6 @@ const emailSend = (link) => {
       margin-bottom: 20px;
     }
 
-    .expiration-text {
-      color: #f56565;
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-    }
-
     .reset-button {
       width: 100%;
       background-color: #4a5568;
@@ -66,7 +60,7 @@ const emailSend = (link) => {
   <div class="card">
     <h2>Reset Password Akun</h2>
     <p>Jika Anda tidak mereset kata sandi, Anda bisa mengabaikan email ini.</p>
-    <p class="expiration-text">Tautan reset kata sandi akan kedaluwarsa dalam 1 jam.</p>
+    <br>
     <a href="${link}" class="reset-button">Reset Kata Sandi</a>
   </div>
 </body>
