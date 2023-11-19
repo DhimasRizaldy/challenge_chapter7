@@ -51,7 +51,7 @@ const login = async (req, res, next) => {
     });
 
     if (!user) {
-      res.redirect('/?message=Email not found&status=false');
+      res.redirect('/?message=Email not found!&status=false');
     }
 
     const isPasswordMatch = await bcrypt.compare(password, user.password);

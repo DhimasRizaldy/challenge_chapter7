@@ -91,6 +91,24 @@
       margin: 0;
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Seleksi elemen pesan error dan sukses
+      const errorMessage = document.querySelector('.error-message');
+      const successMessage = document.querySelector('.success-message');
+
+      // Fungsi untuk menyembunyikan pesan setelah 5 detik
+      function hideMessages() {
+        setTimeout(function () {
+          errorMessage.style.display = 'none';
+          successMessage.style.display = 'none';
+        }, 3000);
+      }
+
+      // Panggil fungsi saat DOM sudah tereload
+      hideMessages();
+    });
+  </script>
 </head>
 
 <body>

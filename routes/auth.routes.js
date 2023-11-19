@@ -46,7 +46,7 @@ module.exports = function (io) {
 
   router.get('/api/logout', (req, res) => {
     res.clearCookie('token');
-    res.redirect('/?message=Logout successfully&status=true');
+    res.redirect('/?message=Logout successfully!&status=true');
   });
 
   return router;

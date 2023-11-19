@@ -81,6 +81,24 @@
       text-decoration: underline;
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Seleksi elemen pesan error dan Success
+      const errorMessage = document.querySelector('.error-message');
+      const successMessage = document.querySelector('.success-message');
+
+      // Fungsi untuk menyembunyikan pesan setelah 5 detik
+      function hideMessages() {
+        setTimeout(function () {
+          errorMessage.style.display = 'none';
+          successMessage.style.display = 'none';
+        }, 3000);
+      }
+
+      // Panggil fungsi saat DOM sudah tereload
+      hideMessages();
+    });
+  </script>
 </head>
 
 <body class="flex items-center justify-center h-screen">
@@ -88,7 +106,7 @@
     <h2>Register</h2>
     <% if (status === "true") { %>
     <div class="success-message">
-      <p><span class="font-semibold">Sukses:</span> <%= message %></p>
+      <p><span class="font-semibold">Success:</span> <%= message %></p>
     </div>
     <% } else { %> <% if (message) { %>
     <div class="error-message">
