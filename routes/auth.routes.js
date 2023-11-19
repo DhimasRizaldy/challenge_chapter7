@@ -1,12 +1,13 @@
-const { register, login, forgotPassword, resetPassword } = require('../controllers/auth.controller');
-const verivyToken = require('../libs/verivyToken');
+const { register, login, forgotPassword, resetPassword } = require('../controllers/auth.controllers');
+const verifyToken = require('../libs/verifyToken');
 const router = require('express').Router();
-const prisma = require('../libs/prisma');
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 module.exports = function (io) {
   router.get('/', (req, res) => {
     const { message, status } = req.query;
-    res.render('index', { message, status });
+    res.render('login', { message, status });
   });
   router.post('/api/login', login);
 
@@ -27,7 +28,7 @@ module.exports = function (io) {
   });
   router.post('/api/reset-password', resetPassword.bind(null, io));
 
-  router.get('/dashboard', verivyToken, async (req, res) => {
+  router.get('/dashboard', verifyToken, async (req, res) => {
     try {
       const notifications = await prisma.notifications.findMany({
         where: {

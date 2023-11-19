@@ -1,8 +1,9 @@
-const prisma = require('../libs/prisma');
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { sendEmail } = require('../libs/nodemailer');
-const emailTemplate = require('../libs/emailTemplate');
+const emailSend = require('../libs/emailSend');
 
 const register = async (req, res, next) => {
   try {
@@ -43,7 +44,6 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    sdsd
     const user = await prisma.users.findUnique({
       where: {
         email,
@@ -57,7 +57,7 @@ const login = async (req, res, next) => {
     const isPasswordMatch = await bcrypt.compare(password, user.password);
 
     if (!isPasswordMatch) {
-      res.redirect('/?message=Email or password wrong&status=false');
+      res.redirect('/?message=Email and Password do not match!&status=false');
     }
 
     const token = jwt.sign(
@@ -91,7 +91,7 @@ const forgotPassword = async (req, res, next) => {
     });
 
     if (!user) {
-      res.redirect('/forgot-password?message=Email not found&status=false');
+      res.redirect('/forgot-password?message=Email not found!&status=false');
     } else {
       const token = jwt.sign(
         {
@@ -107,10 +107,10 @@ const forgotPassword = async (req, res, next) => {
       await sendEmail({
         to: email,
         subject: 'Reset Password',
-        html: emailTemplate(link),
+        html: emailSend(link),
       });
 
-      res.redirect(`/forgot-password?message=Reset password link telah dikirim ke emailmu&status=true`);
+      res.redirect(`/forgot-password?message=Link Reset Password berhasil dikirim ke email anda!&status=true`);
     }
   } catch (error) {
     next(error);
