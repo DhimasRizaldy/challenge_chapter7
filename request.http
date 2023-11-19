@@ -1,0 +1,24 @@
+### Test Register
+POST http://localhost:3000/api/v1/register
+Content-Type: application/json
+
+{
+    "name":"admin",
+    "email":"admin1@gmail.com",
+    "password":"admin123",
+    "password_confirmation":"admin123"
+}
+
+
+### Test Login
+POST http://localhost:3000/api/v1/login
+Content-Type: application/json
+
+{
+    "email":"admin1@gmail.com",
+    "password":"admin123"
+}
+
+### Test Token JWT (authenticad)
+GET http://localhost:3000/api/v1/authenticad
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAwMzI4MDc3fQ.V5SAqs6133kw4mZb7vBgB_0YMAA2_4bsAgnYyrqm7KI
