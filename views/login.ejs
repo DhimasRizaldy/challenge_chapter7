@@ -25,7 +25,8 @@
       margin-bottom: 1rem;
     }
 
-    .error-message {
+    .error-message,
+    .success-message {
       background-color: #fee2e2;
       border-left: 4px solid #e53e3e;
       color: #e53e3e;
@@ -37,8 +38,6 @@
       background-color: #d1fae5;
       border-left: 4px solid #38a169;
       color: #38a169;
-      padding: 1rem;
-      margin-bottom: 1rem;
     }
 
     .form-input {
@@ -91,7 +90,7 @@
       const status = urlParams.get('status');
 
       // Seleksi elemen pesan
-      const messageElement = document.querySelector('.success-message');
+      const messageElement = document.querySelector('.success-message, .error-message');
 
       // Fungsi untuk menyembunyikan pesan setelah 3 detik
       function hideMessage() {
@@ -103,6 +102,9 @@
       // Tampilkan pesan dan panggil fungsi penyembunyian
       if (message && status === 'true') {
         messageElement.innerHTML = `<p><span class="font-semibold">Success:</span> ${message}</p>`;
+        hideMessage();
+      } else if (message && status === 'false') {
+        messageElement.innerHTML = `<p><span class="font-semibold">Error:</span> ${message}</p>`;
         hideMessage();
       }
     });
@@ -118,7 +120,7 @@
     </div>
     <% } else { %> <% if (message) { %>
     <div class="success-message">
-      <p><span class="font-semibold">Sukses:</span> <%= message %></p>
+      <p><span class="font-semibold">Success:</span> <%= message %></p>
     </div>
     <% } %> <% } %>
     <form action="/api/login" method="post">
