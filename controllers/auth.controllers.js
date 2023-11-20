@@ -52,7 +52,6 @@ module.exports = {
           email,
         },
       });
-
       if (!user) {
         res.redirect('/?message=Email not found!&status=false');
       }

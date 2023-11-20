@@ -121,9 +121,11 @@
   </script>
 </head>
 
+<!-- ... (bagian head dan style tetap sama) ... -->
+
 <body>
   <div class="success-message">
-    <p><span class="font-semibold">Success:</span> Login Successfuly!</p>
+    <p><span class="font-semibold">Success:</span> Login Berhasil!</p>
   </div>
   <div class="dashboard-container">
     <div class="main-content">
@@ -132,7 +134,15 @@
         <p><span class="font-semibold">Nama:</span> <%= name %></p>
         <p><span class="font-semibold">Email:</span> <%= email %></p>
       </div>
-      <a href="/api/logout" class="logout-button">Logout</a>
+      <!-- Ganti link logout dengan ikon -->
+      <a href="/api/logout" class="logout-button">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          class="h-6 w-6 inline-block">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm4 6H8v2h8v-2z" />
+        </svg>
+        Logout
+      </a>
     </div>
     <div class="notification-sidebar">
       <h2>Notifikasi</h2>
